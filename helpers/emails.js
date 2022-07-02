@@ -1,17 +1,18 @@
 import nodemailer from 'nodemailer'
 
 export const emailRegistro = async (datos) => {
-    const { email, nombre, token } = datos;
+  const { email, nombre, token } = datos;
 
-    const transport = nodemailer.createTransport({
-        //host: process.env.EMAIL_HOST,
-        //port: process.env.EMAIL_PORT,
-        service: 'gmail',
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS
-        }
-      }); 
+
+  const transport = nodemailer.createTransport({
+    //host: process.env.EMAIL_HOST,
+    //port: process.env.EMAIL_PORT,
+    service: 'gmail',
+    auth: {
+      user: process.env.USER_GMAIL,
+      pass: process.env.PASS_GMAIL
+    }
+  });
 
     // Información del email
     const info = await transport.sendMail({
@@ -27,14 +28,15 @@ export const emailRegistro = async (datos) => {
     })
 }
 export const emailOlvidePassword = async (datos) => {
+
     const { email, nombre, token } = datos;
     const transport = nodemailer.createTransport({
       //host: process.env.EMAIL_HOST,
       //port: process.env.EMAIL_PORT,
       service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: process.env.USER_GMAIL,
+        pass: process.env.PASS_GMAIL
       }
     }); 
 

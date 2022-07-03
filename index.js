@@ -16,10 +16,10 @@ dotenv.config()
 conectarDB()
 
 // Configurar CORS
-const whiteList = [process.env.FRONTEND_URL]
+const whiteList = [process.env.FRONTEND_URL, process.env.FRONTEND_URL_BACKUP]
 const corsOptions = {
     origin: function(origin, callback ) {
-        console.log(origin)
+
         if(whiteList.includes(origin)){
             // Puede consultar la API
             callback(null, true)
@@ -61,7 +61,7 @@ const io = new Server(servidor, {
 })
 
 io.on('connection', (socket) => {
-    //console.log("Conectado a Socket.io")
+
 
     // Definir los eventos de socket.io
     socket.on('onAbrirProyecto', (proyecto) => {
